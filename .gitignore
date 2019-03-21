@@ -1,0 +1,14 @@
+*.user
+*.aeproperties
+.vs/
+*.tmp
+*.Generated.cs
+*.cachefile
+*.csvSettings
+*.sln.metaproj
+!FileAliases.Generated.cs
+SpaceGame/SpaceGame/bin/
+SpaceGame/bin/
+SpaceGame/SpaceGame/obj/
+SpaceGame/obj/
+SpaceGame/SpaceGameContent/obj/
