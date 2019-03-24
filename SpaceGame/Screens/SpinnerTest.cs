@@ -137,7 +137,14 @@ namespace SpaceGame.Screens
 
         private void RemoveBullets()
         {
-
+            for (int i = BulletList.Count - 1; i > -1; i--)
+            {
+                Bullet bullet = BulletList[i];
+                if (Math.Abs(bullet.X) > 300 || Math.Abs(bullet.Y) > 300)
+                {
+                    bullet.Destroy();
+                }
+            }
         }
     }
 }
