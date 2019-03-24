@@ -12,7 +12,7 @@ using SpaceGame.Factories;
 
 namespace SpaceGame.Entities
 {
-	public partial class EnemyKamikaze
+	public partial class EnemySpinner
 	{
 
         //Get player location, used for AI
@@ -29,6 +29,15 @@ namespace SpaceGame.Entities
             set { playerLocationY = value; }
         }
 
+        double mLastSpawnTime;
+        private bool IsTimeToSpawn
+        {
+            get
+            {
+                return FlatRedBall.Screens.ScreenManager.CurrentScreen.PauseAdjustedSecondsSince(mLastSpawnTime) > 1.0/BulletsPerSecond;
+            }
+        }
+
         /// <summary>
         /// Initialization logic which is execute only one time for this Entity (unless the Entity is pooled).
         /// This method is called when the Entity is added to managers. Entities which are instantiated but not
@@ -37,11 +46,13 @@ namespace SpaceGame.Entities
 		private void CustomInitialize()
 		{
 
-        }
+		}
 
 		private void CustomActivity()
 		{
             MovementActivity();
+            TurningActivity();
+            ShootingActivity();
 
 		}
 
@@ -58,31 +69,36 @@ namespace SpaceGame.Entities
 
         private void MovementActivity()
         {
-            //Check where player ship is and the distance to it
-            double distanceToPlayer = Math.Sqrt(
-                Math.Pow(System.Convert.ToDouble(this.X - playerLocationX),2) +
-                Math.Pow(System.Convert.ToDouble(this.Y - playerLocationY),2));
+            //no movement yet
+        }
 
-            //If player ship is close enough to kamikaze then become hostile
-            if (distanceToPlayer < Range)
-            {
-                this.CurrentState = VariableState.Hostile;
+        private void TurningActivity()
+        {
+            this.RotationZVelocity = System.Convert.ToSingle(TurningSpeed/100.0);
+        }
 
-                //Start moving towards player ship
-                this.XVelocity = Convert.ToSingle((playerLocationX - this.X) / distanceToPlayer) * MovementSpeed;
-                this.YVelocity = Convert.ToSingle((playerLocationY - this.Y) / distanceToPlayer) * MovementSpeed;
-            } else
+        private void ShootingActivity()
+        {
+            if (IsTimeToSpawn)
             {
-                //Become dormant when player is far away
-                this.CurrentState = VariableState.Dormant;
-                this.XVelocity = 0;
-                this.YVelocity = 0;
+                SpawnBullet();
+                mLastSpawnTime = FlatRedBall.Screens.ScreenManager.CurrentScreen.PauseAdjustedCurrentTime;
             }
+        }
+
+        private void SpawnBullet()
+        {
+            Bullet bullet = BulletFactory.CreateNew();
+            bullet.IsFromPlayer = false;
+            bullet.Damage = this.Damage;
+            bullet.Position = this.Position + this.RotationMatrix.Up * 12;
+            bullet.RotationZ = this.RotationZ;
+            bullet.Velocity = this.RotationMatrix.Up * bullet.MovementSpeed;
         }
 
         public void Explode()
         {
-            //Kamikaze explodes, creating an explosion and getting destroyed
+            //Spinner explodes, creating an explosion and getting destroyed
             Explosion explosion = ExplosionFactory.CreateNew();
             explosion.Position = this.Position;
             explosion.Velocity = this.Velocity;

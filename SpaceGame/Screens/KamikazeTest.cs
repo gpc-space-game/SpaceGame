@@ -76,10 +76,8 @@ namespace SpaceGame.Screens
             //for (int i = EnemyKamikazeList.Count - 1; i > -1; i--)
             {
                 EnemyKamikaze kamikaze = EnemyKamikazeList[i];
-                //EnemyKamikazeList[i].PlayerLocationX = PlayerLocationX();
                 kamikaze.PlayerLocationX = TargetShipInstance.X;
                 kamikaze.PlayerLocationY = TargetShipInstance.Y;
-                //EnemyKamikazeList[i].PlayerLocationY = PlayerLocationY();
             }
         }
 

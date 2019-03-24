@@ -39,9 +39,17 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\Bullet.cs" />
+    <Compile Include="Entities\Bullet.Generated.cs">
+      <DependentUpon>Bullet.cs</DependentUpon>
+    </Compile>
     <Compile Include="Entities\EnemyKamikaze.cs" />
     <Compile Include="Entities\EnemyKamikaze.Generated.cs">
       <DependentUpon>EnemyKamikaze.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\EnemySpinner.cs" />
+    <Compile Include="Entities\EnemySpinner.Generated.cs">
+      <DependentUpon>EnemySpinner.cs</DependentUpon>
     </Compile>
     <Compile Include="Entities\Explosion.cs" />
     <Compile Include="Entities\Explosion.Generated.cs">
@@ -51,7 +59,9 @@
     <Compile Include="Entities\TargetShip.Generated.cs">
       <DependentUpon>TargetShip.cs</DependentUpon>
     </Compile>
+    <Compile Include="Factories\BulletFactory.Generated.cs" />
     <Compile Include="Factories\EnemyKamikazeFactory.Generated.cs" />
+    <Compile Include="Factories\EnemySpinnerFactory.Generated.cs" />
     <Compile Include="Factories\ExplosionFactory.Generated.cs" />
     <Compile Include="FileAliases.Generated.cs" />
     <Compile Include="Game1.cs" />
@@ -63,6 +73,10 @@
     <Compile Include="Screens\KamikazeTest.cs" />
     <Compile Include="Screens\KamikazeTest.Generated.cs">
       <DependentUpon>KamikazeTest.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Screens\SpinnerTest.cs" />
+    <Compile Include="Screens\SpinnerTest.Generated.cs">
+      <DependentUpon>SpinnerTest.cs</DependentUpon>
     </Compile>
     <Compile Include="Setup\CameraSetup.cs" />
   </ItemGroup>
