@@ -56,7 +56,7 @@ namespace SpaceGame
 
 			GlobalContent.Initialize();
 			CameraSetup.SetupCamera(SpriteManager.Camera, graphics);
-            //ScreenManager.Start(typeof(SomeScreen).FullName);
+			FlatRedBall.Screens.ScreenManager.Start(typeof(SpaceGame.Screens.KamikazeTest));
 
             base.Initialize();
         }

@@ -39,6 +39,20 @@
     <ApplicationIcon>Icon.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Entities\EnemyKamikaze.cs" />
+    <Compile Include="Entities\EnemyKamikaze.Generated.cs">
+      <DependentUpon>EnemyKamikaze.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\Explosion.cs" />
+    <Compile Include="Entities\Explosion.Generated.cs">
+      <DependentUpon>Explosion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Entities\TargetShip.cs" />
+    <Compile Include="Entities\TargetShip.Generated.cs">
+      <DependentUpon>TargetShip.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Factories\EnemyKamikazeFactory.Generated.cs" />
+    <Compile Include="Factories\ExplosionFactory.Generated.cs" />
     <Compile Include="FileAliases.Generated.cs" />
     <Compile Include="Game1.cs" />
     <Compile Include="GlobalContent.Generated.cs" />
@@ -46,6 +60,10 @@
     <Compile Include="Performance\PoolList.Generated.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Screens\KamikazeTest.cs" />
+    <Compile Include="Screens\KamikazeTest.Generated.cs">
+      <DependentUpon>KamikazeTest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Setup\CameraSetup.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -84,6 +102,10 @@
     <Content Include="Content\shader.xnb">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <None Include="content\entities\enemykamikaze\nuke.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <Name>nuke</Name>
+    </None>
     <None Include="Libraries\DesktopGl\Debug\FlatRedBall.Forms.dll" />
     <None Include="Libraries\DesktopGl\Debug\GumCoreXnaPc.dll" />
     <None Include="Libraries\DesktopGl\Debug\StateInterpolation.dll" />
